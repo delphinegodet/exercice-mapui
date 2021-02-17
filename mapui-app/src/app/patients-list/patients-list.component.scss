@@ -1,0 +1,19 @@
+.patient-list {
+  text-align: center;
+  max-width: 1080px;
+  margin: auto;
+  &-grid {
+    justify-content: center;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  &-card {
+    width: fit-content;
+    padding: 20px;
+    margin: auto;
+  }
+}

@@ -1,0 +1,25 @@
+<div *ngIf="patient">
+  <h2>{{(patient.firstName + " " + patient.lastName) | uppercase}}</h2>
+  <div><span>age: </span>{{patient.age + "ans"}}</div>
+  <div><span>sex: </span>{{patient.sex === 1 ? "Male" : "Female"}}</div>
+
+  <div>
+    <label>first Name:
+      <input [(ngModel)]="patient.firstName" placeholder="firstName"/>
+    </label>
+    <label>Last Name:
+      <input [(ngModel)]="patient.lastName" placeholder="lastName"/>
+    </label>
+    <label>Age:
+      <input [(ngModel)]="patient.age" type="number" placeholder="age"/>
+    </label>
+    <label>Sex:
+      <select [(ngModel)]="patient.sex">
+        <option value="1">Male</option>
+        <option value="2">Female</option>
+      </select>
+    </label>
+  </div>
+  <button (click)="save()">save</button>
+  <button (click)="goBack()">go back</button>
+</div>

@@ -1,0 +1,5 @@
+<div *ngIf="patient">
+  <h2>{{(patient.firstName + " " + patient.lastName) | uppercase}}</h2>
+  <div><span>age: </span>{{patient.age + "ans"}}</div>
+  <a routerLink="/patients/{{patient._id}}">More information</a>
+</div>
