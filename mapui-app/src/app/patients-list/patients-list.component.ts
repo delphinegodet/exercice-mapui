@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Patient} from '../interfaces/Patient';
 import {PatientsService} from '../patients.service';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-patients-list',
@@ -11,13 +10,6 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 export class PatientsListComponent implements OnInit {
   patients: Patient[];
-
-  newPatient = new FormGroup({
-    firstName: new FormControl('', Validators.required),
-    lastName: new FormControl('', Validators.required),
-    age: new FormControl(0, Validators.required),
-    sex: new FormControl(0, Validators.required)
-  });
 
   constructor(private patientsService: PatientsService) {
     this.patients = [];
@@ -29,21 +21,15 @@ export class PatientsListComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.getPatients();
+  addPatient(patient: Patient): void {
+    this.patients.push(patient);
   }
 
-  create(): void {
-    if (this.newPatient.value.firstName === '' || this.newPatient.value.lastName === '' ||
-    this.newPatient.value.age === 0 || this.newPatient.value.sex === 0) {
-      return;
-    }
+  deletePatient(patient: Patient): void {
+    this.patients = this.patients.filter(p => p._id !== patient._id);
+  }
 
-    const createPatient: Patient = {...this.newPatient.value};
-
-    this.patientsService.addPatient(createPatient)
-      .subscribe(patient => {
-        this.patients.push(patient);
-      });
+  ngOnInit(): void {
+    this.getPatients();
   }
 }

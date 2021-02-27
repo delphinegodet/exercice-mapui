@@ -1,0 +1,14 @@
+.form {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 20px;
+  &-card {
+    width: fit-content;
+    padding: 20px;
+    margin: auto;
+
+    mat-form-field {
+      margin: 0 8px;
+    }
+  }
+}
