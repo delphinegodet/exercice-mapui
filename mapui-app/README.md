@@ -15,6 +15,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Delete a patient from the list
 - Edit a patient on his detail page
 
+### Drugs
+- Add a Drug on the patients list
+- See the list of drugs from the patients list
+- Delete a drug from the Drugs list
+- Link a Drug to a Patient on the Patient detail
+- See the drugs linked to a patient on his detail page
+
 ## Development server
 
 Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
