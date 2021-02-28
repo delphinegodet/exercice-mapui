@@ -30,4 +30,21 @@ router.delete('/doctors/:doctorId', async(req, res, next) => {
     return res.send(doctor);
 });
 
+
+router.put('/doctors/:doctorId', async (req, res, next) => {
+    const doctor = await req.context.models.Doctor.findOne({_id: req.params.doctorId})
+        .catch(e => next(new BadRequestError(e)));
+
+    if (doctor) {
+        doctor.firstName = req.body.firstName || doctor.firstName;
+        doctor.lastName = req.body.lastName || doctor.lastName;
+        doctor.speciality = req.body.speciality || doctor.speciality;
+
+        await doctor.save().catch(e => next(new BadRequestError(e)));
+    }
+    else return res.status(404).json({error: new Error("Patient not found.")});
+
+    return res.send(doctor);
+});
+
 export default router;

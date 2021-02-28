@@ -7,7 +7,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DoctorsComponent } from './doctors/doctors.component';
 import { PatientsListComponent } from './patients-list/patients-list.component';
 import { PatientDetailComponent } from './patient-detail/patient-detail.component';
 import { PatientThumbComponent } from './patient-thumb/patient-thumb.component';
@@ -32,13 +31,16 @@ import {MatChipsModule} from '@angular/material/chips';
 import { DrugsListComponent } from './drugs-list/drugs-list.component';
 import { DialogDrugsListComponent } from './dialog-drugs-list/dialog-drugs-list.component';
 import {MatTableModule} from '@angular/material/table';
-import {MatSortModule} from "@angular/material/sort";
-import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatSortModule} from '@angular/material/sort';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { DoctorsListComponent } from './doctors-list/doctors-list.component';
+import { DoctorFormComponent } from './doctor-form/doctor-form.component';
+import { DialogDoctorFormComponent } from './dialog-doctor-form/dialog-doctor-form.component';
+import { DoctorThumbComponent } from './doctor-thumb/doctor-thumb.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DoctorsComponent,
     PatientsListComponent,
     PatientDetailComponent,
     PatientThumbComponent,
@@ -47,7 +49,11 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     DrugFormComponent,
     DialogDrugFormComponent,
     DrugsListComponent,
-    DialogDrugsListComponent
+    DialogDrugsListComponent,
+    DoctorsListComponent,
+    DoctorFormComponent,
+    DialogDoctorFormComponent,
+    DoctorThumbComponent
   ],
   imports: [
     BrowserModule,

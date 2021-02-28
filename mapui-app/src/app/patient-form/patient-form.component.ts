@@ -1,4 +1,4 @@
-import {Component, Output, EventEmitter, Input, Inject} from '@angular/core';
+import {Component, Output, EventEmitter, Input} from '@angular/core';
 import {Patient} from '../interfaces/Patient';
 import {MatDialog} from '@angular/material/dialog';
 import {DialogPatientFormComponent} from '../dialog-patient-form/dialog-patient-form.component';

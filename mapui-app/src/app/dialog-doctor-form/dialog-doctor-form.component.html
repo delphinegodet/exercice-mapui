@@ -1,0 +1,26 @@
+<mat-dialog-content>
+  <mat-card class="form-card">
+    <mat-card-title>{{data.create ? "Create new doctor" : "Update doctor"}}</mat-card-title>
+    <form #myForm="ngForm" [formGroup]="doctorForm" (ngSubmit)="validate(myForm);" class="form">
+      <mat-form-field>
+        <mat-label>First Name</mat-label>
+
+        <input matInput type="text" formControlName="firstName" name="firstName"/>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Last Name</mat-label>
+
+        <input matInput type="text" formControlName="lastName" name="lastName"/>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Speciality</mat-label>
+
+        <input matInput type="text" formControlName="speciality" name="speciality"/>
+      </mat-form-field>
+
+      <button class="form-card-btn" mat-raised-button color="accent" type="submit">{{data.create ? 'Create' : 'Update'}}</button>
+    </form>
+  </mat-card>
+</mat-dialog-content>

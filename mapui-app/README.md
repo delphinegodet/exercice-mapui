@@ -9,18 +9,24 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Current features
 
 ### Patients
-- View List of patients
-- View Detail of a patient
-- Create a new Patient on the list
+- View list of patients
+- View detail of a patient
+- Create a new patient on the list
 - Delete a patient from the list
 - Edit a patient on his detail page
 
 ### Drugs
-- Add a Drug on the patients list
+- Add a drug on the patients list
 - See the list of drugs from the patients list
 - Delete a drug from the Drugs list
-- Link a Drug to a Patient on the Patient detail
+- Link a drug to a patient on the patient detail
 - See the drugs linked to a patient on his detail page
+
+### Doctors
+- View List of doctors
+- Create a new doctor on the list
+- Delete a doctor from the list
+- Edit a doctor from the list
 
 ## Development server
 

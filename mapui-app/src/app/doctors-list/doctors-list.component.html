@@ -1,0 +1,9 @@
+<div *ngIf="doctors" class="doctor-list">
+  <h1>Doctors</h1>
+  <app-doctor-form (addDoctor)="addDoctor($event)"></app-doctor-form>
+  <mat-grid-list cols="4" class="doctor-list-grid">
+    <mat-grid-tile *ngFor="let doctor of doctors" class="col-1-4">
+      <app-doctor-thumb [doctor]="doctor" (updateDoctor)="updateDoctor($event)" (deleteDoctor)="deleteDoctor($event)"></app-doctor-thumb>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

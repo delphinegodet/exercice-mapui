@@ -1,12 +1,19 @@
 <mat-card *ngIf="patient" class="patient-thumb">
-  <mat-card-header>
-    <a routerLink="/patients/{{patient._id}}" class="patient-thumb-link">
-      <mat-card-title>{{(patient.firstName + " " + patient.lastName) | uppercase}}</mat-card-title>
-    </a>
+  <mat-card-header class="patient-thumb-header">
+
+    <mat-card-title>
+      <a routerLink="/patients/{{patient._id}}" class="patient-thumb-link">
+        {{(patient.firstName + " " + patient.lastName) | uppercase}}
+      </a>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <mat-chip-list aria-label="Patient information">
+        <mat-chip>{{patient.age + ' ans'}}</mat-chip>
+        <mat-chip>{{patient.sex === 1 ? "Male" : "Female"}}</mat-chip>
+      </mat-chip-list>
+    </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <p>age: {{patient.age}} ans</p>
-    <p>sex: {{patient.sex === 1 ? "Male" : "Female"}}</p>
     <p>{{patient.drugs.length > 0 ? patient.drugs.length : 'No'}} drugs</p>
     <p>{{patient.treatments.length > 0 ? patient.treatments.length : 'No'}} treatments</p>
   </mat-card-content>

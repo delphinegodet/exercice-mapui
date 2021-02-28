@@ -1,5 +1,8 @@
 .patient-thumb {
   padding-bottom: 20px;
+  &-header {
+    margin: auto !important;
+  }
   &-btn {
     margin: 0 8px;
   }

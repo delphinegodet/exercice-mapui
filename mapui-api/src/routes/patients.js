@@ -49,8 +49,8 @@ router.put('/patients/:patientId', async (req, res, next) => {
         patient.lastName = req.body.lastName || patient.lastName;
         patient.age = req.body.age || patient.age;
         patient.sex = req.body.sex || patient.sex;
-        patient.drugs = req.body.drugs;
-        patient.treatments = req.body.treatments;
+        patient.drugs = req.body.drugs || patient.drugs;
+        patient.treatments = req.body.treatments || patient.treatments;
 
         await patient.save().catch(e => next(new BadRequestError(e)));
         await patient.populate('treatments').populate('drugs').execPopulate();

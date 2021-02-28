@@ -1,0 +1,20 @@
+<mat-card *ngIf="doctor" class="doctor-thumb">
+  <mat-card-header>
+    <mat-card-title>{{(doctor.firstName + " " + doctor.lastName) | uppercase}}</mat-card-title>
+    <mat-card-subtitle>
+      <mat-chip-list aria-label="Patient information">
+        <mat-chip>{{doctor.speciality}}</mat-chip>
+      </mat-chip-list>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>associated treatments: </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <app-doctor-form [currentDoctor]="doctor" (updateDoctor)="update($event)" [create]="false"></app-doctor-form>
+
+    <button mat-mini-fab color="warn" class="doctor-thumb-btn" (click)="delete(doctor)">
+      <mat-icon aria-hidden="false" aria-label="Delete">delete</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

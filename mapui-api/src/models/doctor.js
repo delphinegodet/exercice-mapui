@@ -18,7 +18,7 @@ const doctorSchema = new mongoose.Schema(
 );
 
 doctorSchema.statics.findById = async function (id) {
-    return await this.findOne({id});
+    return await this.findOne({_id: id});
 }
 
 const Doctor = mongoose.model('Doctor', doctorSchema);

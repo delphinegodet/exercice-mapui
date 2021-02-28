@@ -5,7 +5,7 @@
         <h1>{{(patient.firstName + " " + patient.lastName) | uppercase}}</h1>
       </mat-card-title>
       <mat-card-subtitle>
-        <mat-chip-list aria-label="Fish selection">
+        <mat-chip-list aria-label="Patient information">
           <mat-chip>{{patient.age + ' ans'}}</mat-chip>
           <mat-chip>{{patient.sex === 1 ? "Male" : "Female"}}</mat-chip>
         </mat-chip-list>

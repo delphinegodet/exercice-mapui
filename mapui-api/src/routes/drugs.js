@@ -10,13 +10,6 @@ router.get('/drugs',  async (req, res, next) => {
     return res.send(drugs);
 });
 
-router.get('/drugs/:drugId', async (req, res, next) => {
-    const drug = await req.context.models.Drug.findById(req.params.drugId)
-        .catch(e => next(new BadRequestError(e)));
-
-    return res.send(drug);
-});
-
 router.post('/drugs', async (req, res, next) => {
     const drug = await req.context.models.Drug.create({
         name: req.body.name,
@@ -36,11 +29,11 @@ router.post('/drugs', async (req, res, next) => {
 });
 
 router.delete('/drugs/:drugId', async (req, res, next) => {
-    const drug = await req.context.models.Drug.findOne({_id: req.params.drugId})
+    const drug = await req.context.models.Drug.findById(req.params.drugId)
         .catch(e => next(new BadRequestError(e)));
 
     if (drug) await drug.remove().catch(e => next(new BadRequestError(e)));
-    else return next(new NotFoundError("Patient not found."));
+    else return next(new NotFoundError("dRUG not found."));
 
     return res.send(drug);
 });
