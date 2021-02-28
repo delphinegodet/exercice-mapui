@@ -25,7 +25,7 @@ const patientSchema = new mongoose.Schema(
 );
 
 patientSchema.statics.findById = async function (id) {
-    return await this.findOne({_id: id}).populate('treatments').populate('drugs');
+    return await this.findOne({_id: id}).populate('drugs').populate('treatments');
 }
 
 patientSchema.pre('remove', function(next) {
