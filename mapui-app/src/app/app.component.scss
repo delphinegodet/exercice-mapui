@@ -11,6 +11,10 @@
     transition: all ease-in-out .5s;
     font-size: 16px;
 
+    mat-icon {
+      margin-right: 10px;
+    }
+
     &:hover {
       background-color: rgba(150, 150, 150, .2);
       color: initial;

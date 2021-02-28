@@ -2,10 +2,8 @@ import 'dotenv/config'; //tjr première ligne d'import
 import cors from 'cors';
 import express from 'express';
 import routes from './routes';
-import { v4 as uuidv4 } from 'uuid';
 import models, { connectDb } from './models';
 
-const id = uuidv4();
 const app = express();
 
 app.use(cors());

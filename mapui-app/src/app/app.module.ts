@@ -23,6 +23,17 @@ import {MatDividerModule} from '@angular/material/divider';
 import { PatientFormComponent } from './patient-form/patient-form.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDialogModule} from '@angular/material/dialog';
+import {DialogPatientFormComponent} from './dialog-patient-form/dialog-patient-form.component';
+import { DrugFormComponent } from './drug-form/drug-form.component';
+import { DialogDrugFormComponent } from './dialog-drug-form/dialog-drug-form.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatChipsModule} from '@angular/material/chips';
+import { DrugsListComponent } from './drugs-list/drugs-list.component';
+import { DialogDrugsListComponent } from './dialog-drugs-list/dialog-drugs-list.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from "@angular/material/sort";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
@@ -31,7 +42,12 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     PatientsListComponent,
     PatientDetailComponent,
     PatientThumbComponent,
-    PatientFormComponent
+    PatientFormComponent,
+    DialogPatientFormComponent,
+    DrugFormComponent,
+    DialogDrugFormComponent,
+    DrugsListComponent,
+    DialogDrugsListComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +66,13 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatListModule,
     MatDividerModule,
     MatIconModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule,
+    MatExpansionModule,
+    MatChipsModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

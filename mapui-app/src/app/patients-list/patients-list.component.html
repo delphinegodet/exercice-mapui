@@ -1,6 +1,8 @@
 <div *ngIf="patients" class="patient-list">
   <h1>Patients</h1>
   <app-patient-form (addPatient)="addPatient($event)"></app-patient-form>
+  <app-drug-form></app-drug-form>
+  <app-drugs-list></app-drugs-list>
   <mat-grid-list cols="4" class="patient-list-grid">
     <mat-grid-tile *ngFor="let patient of patients" class="col-1-4">
       <app-patient-thumb [patient]="patient" (deletePatient)="deletePatient($event)"></app-patient-thumb>

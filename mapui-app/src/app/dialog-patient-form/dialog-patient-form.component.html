@@ -1,0 +1,52 @@
+<mat-dialog-content>
+  <mat-card class="form-card">
+    <mat-card-title>{{data.create ? "Create new patient" : "Update patient"}}</mat-card-title>
+    <form #myForm="ngForm" [formGroup]="patientForm" (ngSubmit)="validate(myForm);" class="form">
+      <mat-form-field>
+        <mat-label>First Name</mat-label>
+
+        <input matInput type="text" formControlName="firstName" name="firstName"/>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Last Name</mat-label>
+
+        <input matInput type="text" formControlName="lastName" name="lastName"/>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Age</mat-label>
+
+        <input matInput type="number" formControlName="age" name="age"/>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Sex</mat-label>
+        <mat-select formControlName="sex">
+          <mat-option [value]=1>Male</mat-option>
+          <mat-option [value]=2>Female</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-accordion *ngIf="drugs.length > 0">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Drugs
+            </mat-panel-title>
+            <mat-panel-description>
+              Select drugs for this patient
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-selection-list #drugSelection>
+            <mat-list-option *ngFor="let drug of drugs" selected="{{selectedDrugs.includes(drug._id)}}" value="{{drug._id}}" (click)="selectDrugs(drugSelection)">
+              {{drug.name}}
+            </mat-list-option>
+          </mat-selection-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <button class="form-card-btn" mat-raised-button color="accent" type="submit">{{data.create ? 'Create' : 'Update'}}</button>
+    </form>
+  </mat-card>
+</mat-dialog-content>

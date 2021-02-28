@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Patient} from '../interfaces/Patient';
 import {PatientsService} from '../patients.service';
 import { ActivatedRoute } from '@angular/router';
@@ -9,6 +9,7 @@ import { Location } from '@angular/common';
   templateUrl: './patient-detail.component.html',
   styleUrls: ['./patient-detail.component.scss']
 })
+
 export class PatientDetailComponent implements OnInit {
   patient: Patient | undefined;
 
@@ -21,11 +22,8 @@ export class PatientDetailComponent implements OnInit {
     this.patientsService.getOnePatient(id).subscribe(patient => this.patient = patient);
   }
 
-  save(): void {
-    if (this.patient) {
-      this.patientsService.updatePatient(this.patient)
-        .subscribe(() => this.goBack());
-    }
+  updatePatient(p: Patient): void {
+    this.patient = p;
   }
 
   goBack(): void {

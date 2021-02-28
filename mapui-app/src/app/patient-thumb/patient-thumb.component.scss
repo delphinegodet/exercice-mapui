@@ -3,4 +3,14 @@
   &-btn {
     margin: 0 8px;
   }
+
+  &-link {
+    transition: all ease-in-out .3s;
+    color: rgba(0,0,0,.87);
+    text-decoration: none;
+
+    &:hover {
+      color: rgba(0,0,0,.65);
+    }
+  }
 }

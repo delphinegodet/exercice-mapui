@@ -8,16 +8,14 @@ const drugSchema = new mongoose.Schema(
         },
         code: {
             type: String,
-            unique: true,
             required: true,
         }
     },
 );
 
 drugSchema.statics.findById = async function (id) {
-    return await this.findOne({id});
+    return await this.findOne({_id: id});
 }
-
 const Drug = mongoose.model('Drug', drugSchema);
 
 export default Drug;
