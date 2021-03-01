@@ -17,16 +17,23 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ### Drugs
 - Add a drug on the patients list
-- See the list of drugs from the patients list
+- View list of drugs from the patients list
 - Delete a drug from the Drugs list
 - Link a drug to a patient on the patient detail
-- See the drugs linked to a patient on his detail page
+- View the drugs linked to a patient on his detail page
 
 ### Doctors
-- View List of doctors
+- View list of doctors
 - Create a new doctor on the list
 - Delete a doctor from the list
 - Edit a doctor from the list
+- View the treatments of the doctor on the list
+- View the patients of the doctor on the list
+
+### Treatments
+- View the treatments of a patient on his detail page
+- Create a new treatment for a patient
+- Delete a treatment of a patient
 
 ## Development server
 

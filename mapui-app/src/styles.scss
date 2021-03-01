@@ -2,12 +2,18 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; text-align: center; }
-.mat-card-header-text {
-  margin: auto !important;
+.mat{
+ &-card-header-text {
+   margin: auto !important;
+ }
+  &-chip-list-wrapper {
+    justify-content: center;
+  }
+  &-content {
+    align-items: center;
+  }
 }
-.mat-chip-list-wrapper {
-  justify-content: center;
-}
+
 h1 {
   font-size: 38px !important;
   margin: 50px 0 !important;

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Patient} from '../interfaces/Patient';
 import {PatientsService} from '../patients.service';
+import {Drug} from "../interfaces/Drug";
 
 @Component({
   selector: 'app-patients-list',
@@ -27,6 +28,12 @@ export class PatientsListComponent implements OnInit {
 
   deletePatient(patient: Patient): void {
     this.patients = this.patients.filter(p => p._id !== patient._id);
+  }
+
+  deleteDrug(drug: Drug): void {
+    this.patients.forEach(p => {
+      p.drugs = p.drugs.filter(d => d._id !== drug._id);
+    });
   }
 
   ngOnInit(): void {

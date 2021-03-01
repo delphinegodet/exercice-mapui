@@ -20,7 +20,7 @@
             </mat-panel-title>
             <mat-panel-description>
               {{patient.drugs.length === 0 ? 'There is no drug for this patient' : 'See the list of drugs of this patient'}}
-              <mat-icon>account_circle</mat-icon>
+              <mat-icon>medication</mat-icon>
             </mat-panel-description>
           </mat-expansion-panel-header>
           <p *ngFor="let drug of patient.drugs">
@@ -34,19 +34,35 @@
             </mat-panel-title>
             <mat-panel-description>
               {{patient.treatments.length === 0 ? 'There is no treatment for this patient' : 'See the list of treatments of this patient'}}
-              <mat-icon>map</mat-icon>
+              <mat-icon>assignment</mat-icon>
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <p *ngFor="let treatment of patient.treatments">
-            du {{treatment.start}} au {{treatment.end }}
-            <br/>
-            {{treatment.text}}
-          </p>
+          <mat-list role="list">
+            <mat-list-item role="listitem" *ngFor="let treatment of patient.treatments">
+              <mat-accordion class="patient-detail-headers-align-not" hideToggle>
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      from {{treatment.start.toDateString()}} to {{treatment.end.toDateString()}}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      {{treatment.doctor.firstName}} {{treatment.doctor.lastName}}
+                      <button mat-mini-fab color="warn" class="patient-thumb-btn" (click)="delete(treatment)">
+                        <mat-icon aria-hidden="false" aria-label="Delete">delete</mat-icon>
+                      </button>
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <p>{{treatment.text}}</p>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </mat-list-item>
+          </mat-list>
         </mat-expansion-panel>
       </mat-accordion>
     </mat-card-content>
     <mat-card-actions>
       <app-patient-form [currentPatient]="patient" (updatePatient)="updatePatient($event)" [create]="false"></app-patient-form>
+      <app-treatment-form (addTreatment)="addTreatment($event)" [patientId]="patient._id"></app-treatment-form>
       <button class="patient-detail-btn-back" mat-raised-button color="accent" (click)="goBack()">go back</button>
     </mat-card-actions>
   </mat-card>

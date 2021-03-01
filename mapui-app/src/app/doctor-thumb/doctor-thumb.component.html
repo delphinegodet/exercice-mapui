@@ -8,7 +8,56 @@
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <p>associated treatments: </p>
+    <mat-accordion class="patient-detail-headers-align" multi>
+      <mat-expansion-panel disabled="{{patients.length === 0}}">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Patients
+          </mat-panel-title>
+          <mat-panel-description>
+            {{patients.length === 0 ? 'No patient':''}}
+            <mat-icon>face</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-list role="list">
+          <mat-list-item role="listitem" *ngFor="let patient of patients" class="doctor-thumb-patient">
+            <a routerLink="/patients/{{patient._id}}" class="doctor-thumb-link">
+              {{(patient.firstName + " " + patient.lastName) | uppercase}}
+            </a>
+            <mat-chip-list aria-label="Patient information">
+              <mat-chip>{{patient.age + ' ans'}}</mat-chip>
+              <mat-chip>{{patient.sex === 1 ? "Male" : "Female"}}</mat-chip>
+            </mat-chip-list>
+          </mat-list-item>
+        </mat-list>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel disabled="{{treatments.length === 0}}">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Treatments
+          </mat-panel-title>
+          <mat-panel-description>
+            {{treatments.length === 0 ? 'No treatment':''}}
+            <mat-icon>assignment</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-list role="list">
+          <mat-list-item role="listitem" *ngFor="let treatment of treatments">
+            <mat-accordion hideToggle>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    from {{treatment.start.toDateString()}} to {{treatment.end.toDateString()}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <p>{{treatment.text}}</p>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </mat-list-item>
+        </mat-list>
+      </mat-expansion-panel>
+    </mat-accordion>
   </mat-card-content>
   <mat-card-actions>
     <app-doctor-form [currentDoctor]="doctor" (updateDoctor)="update($event)" [create]="false"></app-doctor-form>

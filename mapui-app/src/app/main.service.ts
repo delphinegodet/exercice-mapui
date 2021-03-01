@@ -22,7 +22,6 @@ export class MainService {
 
   protected handleError<T>(operation = 'operation', result?: T): any {
     return (error: any): Observable<T> => {
-      console.error(error);
       this.openSnackBar(`${operation} failed: ${error.message}`);
       return of(result as T);
     };

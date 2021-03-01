@@ -1,15 +1,21 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Inject, OnInit, ViewChild} from '@angular/core';
 import {DrugsService} from '../drugs.service';
 import {Drug} from '../interfaces/Drug';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+
+interface DialogData {
+  deleteDrug: EventEmitter<Drug>;
+}
 
 @Component({
   selector: 'app-dialog-drugs-list',
   templateUrl: './dialog-drugs-list.component.html',
   styleUrls: ['./dialog-drugs-list.component.scss']
 })
+
 export class DialogDrugsListComponent implements OnInit {
   drugs: Drug[];
   displayedColumns: string[] = ['name', 'code', 'actions'];
@@ -18,7 +24,7 @@ export class DialogDrugsListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
   @ViewChild(MatSort) sort: MatSort | undefined;
 
-  constructor(private drugsService: DrugsService) {
+  constructor(private drugsService: DrugsService, @Inject(MAT_DIALOG_DATA) public data: DialogData) {
     this.drugs = [];
     this.dataSource = new MatTableDataSource<Drug>();
   }
@@ -42,6 +48,7 @@ export class DialogDrugsListComponent implements OnInit {
       this.dataSource = new MatTableDataSource<Drug>(this.drugs);
       this.dataSource.paginator = this.paginator as MatPaginator;
       this.dataSource.sort = this.sort as MatSort;
+      this.data.deleteDrug.emit(drug);
     });
   }
 

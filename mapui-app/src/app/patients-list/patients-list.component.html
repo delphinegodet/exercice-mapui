@@ -4,7 +4,7 @@
   <app-drug-form></app-drug-form>
   <app-drugs-list></app-drugs-list>
   <mat-grid-list cols="4" class="patient-list-grid">
-    <mat-grid-tile *ngFor="let patient of patients" class="col-1-4">
+    <mat-grid-tile *ngFor="let patient of patients">
       <app-patient-thumb [patient]="patient" (deletePatient)="deletePatient($event)"></app-patient-thumb>
     </mat-grid-tile>
   </mat-grid-list>

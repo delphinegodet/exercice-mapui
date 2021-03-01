@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import {BadRequestError} from "../utils";
 
 const treatmentSchema = new mongoose.Schema(
     {
@@ -19,8 +20,14 @@ const treatmentSchema = new mongoose.Schema(
 );
 
 treatmentSchema.statics.findById = async function (id) {
-    return await this.findOne({id});
+    return await this.findOne({_id: id});
 }
+
+treatmentSchema.pre('remove', async function(next) {
+    this.model("Patient").updateMany({treatments: this._id}, { $pull: { treatments: this._id } }, next).catch(e => next(new BadRequestError(e)));
+
+    next();
+});
 
 const Treatment = mongoose.model('Treatment', treatmentSchema);
 

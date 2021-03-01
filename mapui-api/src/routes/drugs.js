@@ -16,15 +16,6 @@ router.post('/drugs', async (req, res, next) => {
         code: req.body.code
     }).catch(e => next(new BadRequestError(e)));
 
-/*    const patient = await req.context.models.Patient.findById(req.body.patientId)
-        .catch(e => next(new BadRequestError(e)));
-
-    if (patient) {
-        patient.drugs.push(drug._id);
-        await patient.save().catch(e => next(new BadRequestError(e)));
-    }
-    else return res.status(404).json({error: new Error("Patient not found.")});
-*/
     return res.send(drug);
 });
 

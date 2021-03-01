@@ -37,6 +37,10 @@ import { DoctorsListComponent } from './doctors-list/doctors-list.component';
 import { DoctorFormComponent } from './doctor-form/doctor-form.component';
 import { DialogDoctorFormComponent } from './dialog-doctor-form/dialog-doctor-form.component';
 import { DoctorThumbComponent } from './doctor-thumb/doctor-thumb.component';
+import { TreatmentFormComponent } from './treatment-form/treatment-form.component';
+import { DialogTreatmentFormComponent } from './dialog-treatment-form/dialog-treatment-form.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -53,7 +57,9 @@ import { DoctorThumbComponent } from './doctor-thumb/doctor-thumb.component';
     DoctorsListComponent,
     DoctorFormComponent,
     DialogDoctorFormComponent,
-    DoctorThumbComponent
+    DoctorThumbComponent,
+    TreatmentFormComponent,
+    DialogTreatmentFormComponent
   ],
   imports: [
     BrowserModule,
@@ -78,9 +84,13 @@ import { DoctorThumbComponent } from './doctor-thumb/doctor-thumb.component';
     MatChipsModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
-  providers: [],
+  providers: [
+    MatDatepickerModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

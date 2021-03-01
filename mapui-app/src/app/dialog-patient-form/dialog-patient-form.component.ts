@@ -79,6 +79,9 @@ export class DialogPatientFormComponent implements OnInit {
         });
     } else {
       patient._id = this.data.currentPatient?._id as string;
+      if (this.data.currentPatient) {
+        patient.treatments = this.data.currentPatient.treatments;
+      }
       this.patientsService.updatePatient(patient)
         .subscribe((p: Patient) => {
           this.data.updatePatient.emit(p);

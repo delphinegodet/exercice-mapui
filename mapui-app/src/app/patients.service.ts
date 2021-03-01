@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
 import {Patient} from './interfaces/Patient';
-import {Observable, of} from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Observable} from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {Drug} from './interfaces/Drug';
 import {MainService} from './main.service';
+import {Doctor} from "./interfaces/Doctor";
+import {Treatment} from "./interfaces/Treatment";
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,13 @@ export class PatientsService extends MainService  {
     return this.http.get<Patient>(`${this.apiUrl}/patients/${id}`).pipe(
       tap(patient => this.openSnackBar(`Infos of patient ${patient.firstName} ${patient.lastName} loaded`)),
       catchError(this.handleError<Patient>(`fetch one patient`, undefined))
+    );
+  }
+
+  getPatientsByDoctor(doctor: Doctor): Observable<Patient[]> {
+    return this.http.get<Patient[]>(`${this.apiUrl}/patients/doctor/${doctor._id}`).pipe(
+      tap(_ => this.openSnackBar(`All patients of doctor ${doctor.firstName} ${doctor.lastName} loaded`)),
+      catchError(this.handleError<Patient[]>(`fetch all patients of doctor ${doctor.firstName} ${doctor.lastName}`, []))
     );
   }
 

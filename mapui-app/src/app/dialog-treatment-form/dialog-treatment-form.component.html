@@ -1,0 +1,47 @@
+<mat-dialog-content>
+  <mat-card class="form-card">
+    <mat-card-title>{{data.create ? "Create new treatment" : "Update treatment"}}</mat-card-title>
+    <form #myForm="ngForm" [formGroup]="treatmentForm" (ngSubmit)="validate(myForm);" class="form" *ngIf="doctors.length > 0">
+      <mat-form-field>
+        <mat-label>Treatment period</mat-label>
+        <mat-date-range-input formGroupName="range" [rangePicker]="picker">
+          <input matStartDate formControlName="start" placeholder="Start date">
+          <input matEndDate formControlName="end" placeholder="End date">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Text</mat-label>
+
+        <textarea matInput rows="4" type="text" formControlName="text" name="text"></textarea>
+      </mat-form-field>
+
+      <mat-accordion *ngIf="doctors.length > 0">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Doctor
+            </mat-panel-title>
+            <mat-panel-description>
+              Select the doctor of this treatment
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-selection-list #doctorSelection [multiple]="false">
+            <mat-list-option *ngFor="let doctor of doctors" selected="{{selectedDoctor === doctor._id}}" value="{{doctor._id}}" (click)="selectDoctor(doctorSelection)">
+              {{doctor.firstName}} {{doctor.lastName}} : {{doctor.speciality}}
+            </mat-list-option>
+          </mat-selection-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <button class="form-card-btn" mat-raised-button color="accent" type="submit">{{data.create ? 'Create' : 'Update'}}</button>
+    </form>
+    <mat-card-content *ngIf="doctors.length === 0">
+      <p>
+        There are no doctors. You can't create a treatment without a doctor. Please go to Doctors list and add a doctor first.
+      </p>
+    </mat-card-content>
+  </mat-card>
+</mat-dialog-content>

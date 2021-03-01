@@ -10,7 +10,25 @@
     }
   }
 
+  app-treatment-form {
+    margin-left: 10px;
+  }
+
+  .mat-list-item {
+    height: auto;
+  }
+
+  .mat-accordion {
+    width: 100%;
+  }
+
   &-headers-align {
+    &-not {
+      .mat-expansion-panel-header-title, .mat-expansion-panel-header-description {
+        flex-basis: initial !important;
+      }
+    }
+
     .mat-expansion-panel-header-title, .mat-expansion-panel-header-description {
       flex-basis: 0;
     }

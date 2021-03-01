@@ -17,6 +17,24 @@ router.get('/patients/:patientId', async (req, res, next) => {
     return res.send(patient);
 });
 
+
+router.get('/patients/doctor/:doctorId', async (req, res, next) => {
+    let patients = await req.context.models.Patient.find()
+        .populate({
+            path : 'treatments',
+            populate : {
+                path : 'doctor'
+            }
+        }).catch(e => next(new BadRequestError(e)));
+
+    if (patients) {
+        patients = patients.filter(p => p.treatments.find(t => t.doctor._id.toString() === req.params.doctorId));
+    }
+
+    return res.send(patients);
+});
+
+
 router.post('/patients', async (req, res, next) => {
     const patient = await req.context.models.Patient.create({
         firstName: req.body.firstName,
@@ -53,7 +71,12 @@ router.put('/patients/:patientId', async (req, res, next) => {
         patient.treatments = req.body.treatments || patient.treatments;
 
         await patient.save().catch(e => next(new BadRequestError(e)));
-        await patient.populate('treatments').populate('drugs').execPopulate();
+        await patient.populate({
+            path : 'treatments',
+            populate : {
+                path : 'doctor'
+            }
+        }).populate('drugs').execPopulate().catch(e => next(new BadRequestError(e)));
     }
     else return res.status(404).json({error: new Error("Patient not found.")});
 
