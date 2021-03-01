@@ -37,7 +37,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files. Don't forget to launch the API first (which is in `../mapui-api`). And read the README there too to setup the database and launch the API.
 
 ## Build
 
